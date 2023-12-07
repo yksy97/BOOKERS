@@ -1,28 +1,29 @@
-<h1>投稿一覧</h1>
+<h1>Books</h1>
 
- <p>タイトル</p>
+ <span><p>Title</p><p>Body</p><p> </p></span> 
+ <!--ここのレイアウトを整える-->
 
-<%= @books.each do |book| %>
+<% @books.each do |book| %>
 
-
-<tr>
-      <th></th>
-      <th> </th>
+<table>
+  <thead>
+    <tr>
+      <th><%= book.title %></th>
+    </tr>
+    <tr>
+      <th><%= book.body %></th>
+    </tr>
+    <tr>
       <th>
-        <%= link_to "show", "/show" %>
+        <%= link_to "show", book_path(book.id) %>
         <%= link_to "edit", edit_book_path(book.id) %>
-        <%= link_to "destroy", "/new" %>
+        <%= link_to "destroy", book_path(book.id), method: :delete %>
       </th>
     </tr>
-
-<span><%= book.title %></span>
+  </thead>
+</table>
   
 <% end %>
-
-
-
-
-
 
 <h2>New book</h2>
 
