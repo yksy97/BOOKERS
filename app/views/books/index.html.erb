@@ -1,31 +1,32 @@
 <h1>Books</h1>
 
- <tr>
-  <th>Title</th>
-  <th>Body</th>
-  <th>　</th>
- </tr>
- <!--<span><p>Title</p><p>Body</p><p> </p></span> -->
- <!--ここのレイアウトを整える-->
-<% @books.each do |book| %>
-
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Body</th>
-      <th>
+      <th>    </th>
+    </tr>
+  </thead>
+</table>
+
+<% @books.each do |book| %>
+
+<table>
+  <thead>
+    <tr>
+      <td>
+        ここに投稿した本のタイトル
+      </td>
+      <td>
+        ここに投稿した本の内容
+      </td>
+      <td>
         <%= link_to "show", book_path(book.id) %>
         <%= link_to "edit", edit_book_path(book.id) %>
         <%= link_to "destroy", book_path(book.id), method: :delete %>
-      </th>
+      </td>
     </tr>
-    <!--<tr>-->
-    <!--  <th><a= book.title %></th>-->
-    <!--</tr>-->
-    <!--<tr>-->
-    <!--  <th><a= book.body %></th>-->
-    <!--</tr>-->
   </thead>
 </table>
   
