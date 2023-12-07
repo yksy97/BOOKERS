@@ -4,13 +4,13 @@ class BooksController < ApplicationController
   end
   
   def create
-    book = Book.index(book_params)
+    book = Book.new(book_params)
     book.save
     redirect_to book_path(book.id)
   end
 
   def index
-    @book = Book.all
+    @book = Book.new
     @books = Book.all
   end
 
