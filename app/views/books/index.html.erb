@@ -1,73 +1,39 @@
+<h1>投稿一覧</h1>
 
-<!--<table>-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th>Title</th>-->
-<!--      <th>Body</th>-->
-<!--      <th>　</th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th>リーダブルコード</th>-->
-<!--      <th>より良いコードを書くためのシンプルで実践的なテクニック</th>-->
-<!--      <th>-->
-<!--        <%= link_to "show", "/show" %>-->
-<!--        <%= link_to "edit", "/edit" %>-->
-<!--        <%= link_to "destroy", "/new" %>-->
-<!--      </th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th>トラブル知らずのシステム設計</th>-->
-<!--      <th>システム設計の要点を図解で説明してくれます</th>-->
-<!--      <th>-->
-<!--        <%= link_to "show", "/show" %>-->
-<!--        <%= link_to "edit", "/edit" %>-->
-<!--        <%= link_to "destroy", "/new" %>-->
-<!--      </th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th>たのしいRuby</th>-->
-<!--      <th>Rubyの入門におすすsめです</th>-->
-<!--      <th>-->
-<!--        <%= link_to "show", "/show" %>-->
-<!--        <%= link_to "edit", "/edit" %>-->
-<!--        <%= link_to "destroy", "/new" %>-->
-<!--      </th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th>入門Git</th>-->
-<!--      <th>gitについての基本操作から内部構造まで解説してくれます</th>-->
-<!--      <th>-->
-<!--        <%= link_to "show", "/show" %>-->
-<!--        <%= link_to "edit", "/edit" %>-->
-<!--        <%= link_to "destroy", "/new" %>-->
-<!--      </th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th>アルゴリズム図鑑</th>-->
-<!--      <th>アルゴリズムについてカラーイラストでしっかり解説してくれます</th>-->
-<!--      <th>-->
-<!--        <%= link_to "show", "/show" %>-->
-<!--        <%= link_to "edit", "/edit" %>-->
-<!--        <%= link_to "destroy", "/new" %>-->
-<!--      </th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th>達人プログラマー</th>-->
-<!--      <th>プログラマ入門者は必読！</th>-->
-<!--      <th>-->
-<!--        <%= link_to "show", "/show" %>-->
-<!--        <%= link_to "edit", "/edit" %>-->
-<!--        <%= link_to "destroy", "/new" %>-->
-<!--      </th>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <th>データベース実践入門</th>-->
-<!--      <th>効率的なSQL文を教えてくれます</th>-->
-<!--      <th>-->
-<!--        <%= link_to "show", "/show" %>-->
-<!--        <%= link_to "edit", "/edit" %>-->
-<!--        <%= link_to "destroy", "/new" %>-->
-<!--      </th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-<!--</table>-->
+ <p>タイトル</p>
+
+<%= @books.each do |book| %>
+
+
+<tr>
+      <th></th>
+      <th> </th>
+      <th>
+        <%= link_to "show", "/show" %>
+        <%= link_to "edit", edit_book_path(book.id) %>
+        <%= link_to "destroy", "/new" %>
+      </th>
+    </tr>
+
+<span><%= book.title %></span>
+  
+<% end %>
+
+
+
+
+
+
+<h2>New book</h2>
+
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  
+  <h4>Body</h4>
+  <%= f.text_area :body %>
+  
+  <h4><%= f.submit 'Create Book' %></h4>
+
+<% end %>
