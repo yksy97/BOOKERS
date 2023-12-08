@@ -41,9 +41,11 @@ end
   
   def destroy
     book = Book.find(params[:id])
-    book.destroy
+    if book.destroy
+      flash[:notice] = "Book was successfully delete."
     redirect_to '/books'
   end
+end
   
 private
 def book_params
